@@ -1,0 +1,14 @@
+#myHeader {
+  height: 250px;
+  background-image: url('image.png');
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: overlay;
+  background-position: bottom;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 700;
+}
