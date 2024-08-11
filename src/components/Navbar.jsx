@@ -1,4 +1,5 @@
-const Navbar = () => {
+const Navbar = ({setView}) => {
+    
     const total = 25000;
     const token = false;
     return (
@@ -9,9 +10,9 @@ const Navbar = () => {
                 </a>
                 <ul className="navbar-nav me-auto">
                     <li className="nav-item">
-                        <a href="#" className="nav-link">
+                        <button href="#" className="nav-link" onClick={() => setView('home')}>
                             Home
-                        </a>
+                        </button>
                     </li>
                     {token ? (
                         <>
@@ -29,15 +30,15 @@ const Navbar = () => {
                     ) : (
                         <>
                             <li className="nav-item">
-                                <a href="#" className="nav-link">
+                                <button className="nav-link" onClick={() => setView('login')}>
                                     🔐 Login
-                                </a>
+                                </button>
                             </li>
                             <li className="nav-item">
-                                <a href="#" className="nav-link">
+                                <button href="" className="nav-link" onClick={() => setView('register')}>
                                     🔐 Register
-                                </a>
-                            </li>{' '}
+                                </button>
+                            </li>
                         </>
                     )}
                 </ul>
