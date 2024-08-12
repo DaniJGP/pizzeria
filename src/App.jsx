@@ -10,7 +10,7 @@ import { useState } from 'react';
 function App() {
     // Estado para almacenar la vista actual
     const [view, setView] = useState('home');
-    // Función que retorna los componentes que le corresponden a cada vista
+    // Función que retorna los componentes que corresponden a cada vista
     const renderView = (currentView) => {
         if (currentView === 'home') {
             return (

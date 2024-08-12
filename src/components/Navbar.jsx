@@ -5,12 +5,12 @@ const Navbar = ({setView}) => {
     return (
         <nav data-bs-theme="dark" className="navbar navbar-expand text-bg-dark">
             <div className="container-fluid px-2 max-w-xl">
-                <a href="#" className="navbar-brand">
+                <a href="/" className="navbar-brand">
                     Pizzeria Mamma Mia!
                 </a>
                 <ul className="navbar-nav me-auto">
                     <li className="nav-item">
-                        <button href="#" className="nav-link" onClick={() => setView('home')}>
+                        <button className="nav-link" onClick={() => setView('home')}>
                             Home
                         </button>
                     </li>

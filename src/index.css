@@ -8,10 +8,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body {
+  text-align: center;
 }
 
 /* Clases globales */
@@ -27,4 +25,12 @@
 
 .fs-small {
   font-size: 0.875rem;
+}
+
+.formMain {
+  min-height: calc(100vh - 128px);
+}
+
+.form {
+  width: 400px;
 }
