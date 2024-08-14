@@ -1,11 +1,12 @@
 import CardPizza from './CardPizza';
+import { pizzas } from '../assets/pizzas';
 import './Home.css';
 const Home = () => {
     return (
         <>
             <main id="mainStore" className="py-4 px-2">
                 <div className="max-w-xl mx-auto">
-                    <CardPizza
+                    {/* <CardPizza
                         name="Napolitana"
                         price={5950}
                         ingredients={['mozzarella', 'tomates', 'jamón', 'orégano']}
@@ -25,7 +26,17 @@ a1c6-8c57bc388fab"
                         ingredients={['mozzarella', 'pepperoni', 'orégano']}
                         img="https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_com.jpg?alt=media&token=e7cde87a-08d5-4040-
 ac54-90f6c31eb3e3"
-                    />
+                    /> */}
+                    {pizzas.map((pizza) => (
+                        <CardPizza
+                            key={pizza.id}
+                            name={pizza.name}
+                            price={pizza.price}
+                            ingredients={pizza.ingredients}
+                            img={pizza.img}
+                            desc={pizza.desc}
+                        />
+                    ))}
                 </div>
             </main>
         </>
