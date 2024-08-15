@@ -13,11 +13,7 @@
 .btn-cart {
   display: flex;
   place-content: center;
-  font-family: monospace;
-  font-weight: bold;
   text-align: center;
-  height: 1.75rem;
-  width: 1.75rem;
-  padding: 0;
+  padding: .375rem;
   border-radius: .25rem;
 }
