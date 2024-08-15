@@ -12,7 +12,7 @@ const Cart = () => {
                 <div className="col-5">
                     <img src={item.img} alt="" className="cart-img" />
                 </div>
-                <div className="col-7 d-flex flex-column justify-content-between text-start">
+                <div className="col-7 d-flex flex-column justify-content-around text-start">
                     <h3 className="fs-6 text-capitalize">{item.name}</h3>
                     <p>{toPesos(item.price)+' c/u'}</p>
                     <div className="d-flex justify-content-start align-items-center gap-1">
@@ -20,7 +20,7 @@ const Cart = () => {
                         <button className="btn btn-danger border-0 btn-cart">-</button>
                         <button className="btn btn-danger border-0 btn-cart">+</button>
                     </div>
-                    <p className="text-end px-3 fs-small">{'Subtotal: ' + toPesos(item.price * item.count)}</p>
+                    <p className="text-end px-3 fs-small m-0">{'Subtotal: ' + toPesos(item.price * item.count)}</p>
                 </div>
             </div>
         </article>
