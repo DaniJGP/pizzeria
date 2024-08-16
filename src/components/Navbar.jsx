@@ -1,5 +1,4 @@
-const Navbar = ({ setView, view }) => {
-    const total = 25000;
+const Navbar = ({ setView, view, total }) => {
     const token = false;
     return (
         <nav data-bs-theme="dark" className="navbar navbar-expand text-bg-dark">

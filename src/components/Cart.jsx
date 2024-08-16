@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { pizzaCart } from '../assets/pizzas.js';
 import { toPesos } from '../helpers/toPesos.js';
-import { totalInicial } from '../helpers/totalInicial.js';
 import './Cart.css';
 
-const Cart = () => {
+const Cart = ({total, setTotal}) => {
     // Inicializa estados del carro de compras y el total a pagar
     const [cart, setCart] = useState(pizzaCart);
-    const [total, setTotal] = useState(totalInicial());
 
     //Fucnción para actualizar el total
     const updateTotal = () => {
@@ -16,7 +14,7 @@ const Cart = () => {
         setTotal(nuevoTotal);
     };
 
-    // Funciones para actualizar el carro
+    // Funciones para actualizar el carro con los botones - y +
     const addPizza = (id) => {
         let nuevaCart = cart;
         nuevaCart.forEach((item) => {
@@ -42,6 +40,7 @@ const Cart = () => {
         updateTotal();
     };
 
+    // Array con cada item del carrito mapeado a la sintaxis jsx
     const cartItems = cart.map((item) => (
         <article key={item.id} className="card">
             <div className="row cart-item">
