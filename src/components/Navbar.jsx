@@ -33,32 +33,30 @@ const Navbar = ({ setView, view, total }) => {
                                 </button>
                             </li>
                             <li className="nav-item">
-                                <button
-                                    href=""
-                                    className="nav-link"
-                                    onClick={() => setView('register')}
-                                >
+                                <button className="nav-link" onClick={() => setView('register')}>
                                     🔐 Register
                                 </button>
                             </li>
                         </>
                     )}
+                    <li className="nav-item">
+                        <button className="nav-link" onClick={() => setView('pizza')}>
+                            Pizza.jsx
+                        </button>
+                    </li>
                 </ul>
-                {view === 'home' ? (
-                    <button
-                        className="btn btn-dark"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#shoppingCart"
-                        aria-controls="shoppingCart"
-                    >
-                        🛒 Total: ${total.toLocaleString('es-CL')}
-                    </button>
-                ) : null}
+                <button
+                    className="btn btn-dark"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#shoppingCart"
+                    aria-controls="shoppingCart"
+                >
+                    🛒 Total: ${total.toLocaleString('es-CL')}
+                </button>
             </div>
         </nav>
     );
 };
 
 export default Navbar;
-
