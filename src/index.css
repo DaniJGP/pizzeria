@@ -13,6 +13,14 @@ ul {
   font-size: 0.875rem;
 }
 
+.max-w-md {
+  max-width: 768px;
+}
+
+.max-w-lg {
+  max-width: 991px;
+}
+
 .max-w-xl {
   max-width: 1280px;
 }
