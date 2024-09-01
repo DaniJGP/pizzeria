@@ -1,26 +1,30 @@
-const Navbar = ({ setView, view, total }) => {
+import { Link } from 'react-router-dom';
+import { toPesos } from '../helpers/toPesos';
+
+const Navbar = () => {
+    let total = 25000;
     const token = false;
     return (
         <nav data-bs-theme="dark" className="navbar navbar-expand text-bg-dark">
             <div className="container-fluid px-1 max-w-xl">
-                <a href="/" className="navbar-brand">
+                <Link to="/" className="navbar-brand">
                     Pizzeria Mamma Mia!
-                </a>
+                </Link>
                 <ul className="navbar-nav me-auto">
                     <li className="nav-item">
-                        <button className="nav-link" onClick={() => setView('home')}>
+                        <Link to="/" className="nav-link">
                             Home
-                        </button>
+                        </Link>
                     </li>
                     {token ? (
                         <>
                             <li className="nav-item">
-                                <a href="#" className="nav-link">
+                                <a href="/profile" className="nav-link">
                                     🔓 Profile
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a href="#" className="nav-link">
+                                <a href="/logout" className="nav-link">
                                     🔒 Logout
                                 </a>
                             </li>
@@ -28,32 +32,26 @@ const Navbar = ({ setView, view, total }) => {
                     ) : (
                         <>
                             <li className="nav-item">
-                                <button className="nav-link" onClick={() => setView('login')}>
-                                    🔐 Login
-                                </button>
+                                <Link className="nav-link" to="/profile">
+                                    🔓 Profile
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <button className="nav-link" onClick={() => setView('register')}>
+                                <Link className="nav-link" to="/login">
+                                    🔐 Login
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/register">
                                     🔐 Register
-                                </button>
+                                </Link>
                             </li>
                         </>
                     )}
-                    <li className="nav-item">
-                        <button className="nav-link" onClick={() => setView('pizza')}>
-                            Pizza.jsx
-                        </button>
-                    </li>
                 </ul>
-                <button
-                    className="btn btn-dark"
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#shoppingCart"
-                    aria-controls="shoppingCart"
-                >
-                    🛒 Total: ${total.toLocaleString('es-CL')}
-                </button>
+                <Link to="/cart" className="btn btn-dark">
+                    🛒 Total: {toPesos(total)}
+                </Link>
             </div>
         </nav>
     );

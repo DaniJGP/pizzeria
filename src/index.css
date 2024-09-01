@@ -33,6 +33,10 @@ ul {
   min-height: calc(100vh - 128px);
 }
 
+.vh-100-navfooter {
+  min-height: calc(100vh - 128px);
+}
+
 .form {
   width: 400px;
 }

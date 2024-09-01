@@ -1,6 +1,11 @@
-import CardPizza from './CardPizza';
 import { useState, useEffect } from 'react';
+
+import Header from '../components/Header';
+import Navbar from '../components/Navbar';
+import CardPizza from '../components/CardPizza';
+import Footer from '../components/Footer';
 import './Home.css';
+
 const Home = () => {
     // State que alojará el array de objetos de pizzas
     const [pizzas, setPizzas] = useState([]);
@@ -21,6 +26,8 @@ const Home = () => {
 
     return (
         <>
+            <Navbar />
+            <Header />
             <main id="mainStore" className="py-4 px-2">
                 <div className="max-w-xl mx-auto">
                     {pizzas.map((pizza) => (
@@ -35,8 +42,8 @@ const Home = () => {
                     ))}
                 </div>
             </main>
+            <Footer />
         </>
     );
 };
-
 export default Home;

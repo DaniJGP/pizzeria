@@ -1,46 +1,26 @@
+import { Route, Routes } from 'react-router-dom';
+
 import './App.css';
-import Navbar from './components/Navbar';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
-import Cart from './components/Cart';
-import Pizza from './components/Pizza';
-import { useState } from 'react';
-import { totalInicial } from './helpers/totalInicial';
+import Cart from './pages/Cart';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Home from './pages/Home';
+import Pizza from './pages/Pizza';
+import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 
 function App() {
-    // Estado del total del carrito para pasárselo a Navbar y Cart
-    const [total, setTotal] = useState(totalInicial());
-
-    // Estado para almacenar la vista actual
-    const [view, setView] = useState('home');
-
-    // Función que retorna los componentes que corresponden a cada vista
-    const renderView = (currentView) => {
-        if (currentView === 'home') {
-            return (
-                <>
-                    <Header />
-                    <Home />
-                </>
-            );
-        } else if (currentView === 'register') {
-            return <Register />;
-        } else if (currentView === 'login') {
-            return <Login />;
-        } else if (currentView === 'pizza') {
-            return <Pizza />;
-        }
-    };
-
     return (
         <>
-            <Navbar view={view} setView={setView} total={total} />
-            {renderView(view)}
-            <Cart total={total} setTotal={setTotal} />
-            <Footer />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/pizza/p001" element={<Pizza />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
         </>
     );
 }

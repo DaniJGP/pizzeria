@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { pizzaCart } from '../assets/pizzas.js';
 import { toPesos } from '../helpers/toPesos.js';
-import './Cart.css';
+import './CartAside.css'
 
 const Cart = ({total, setTotal}) => {
     // Inicializa estados del carro de compras y el total a pagar
