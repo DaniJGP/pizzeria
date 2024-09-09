@@ -24,15 +24,17 @@ const Home = () => {
         callPizzasAPI();
     }, []);
 
+
     return (
         <>
             <Navbar />
             <Header />
             <main id="mainStore" className="py-4 px-2">
                 <div className="max-w-xl mx-auto">
-                    {pizzas.map((pizza) => (
+                    {pizzas.map((pizza, index) => (
                         <CardPizza
-                            key={pizza.id}
+                            key={index}
+                            id={pizza.id}
                             name={pizza.name}
                             price={pizza.price}
                             ingredients={pizza.ingredients}

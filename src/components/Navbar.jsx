@@ -1,17 +1,11 @@
 import { Link } from 'react-router-dom';
 import { toPesos } from '../helpers/toPesos';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
+import { getTotal } from '../helpers/getTotal';
 
 const Navbar = () => {
     const { cart, setCart } = useContext(CartContext);
-    const getTotal = () => {
-        let total = 0;
-        cart.forEach((item) => {
-            total += item.count * item.price;
-        });
-        return total;
-    };
     const token = false;
     return (
         <nav data-bs-theme="dark" className="navbar navbar-expand text-bg-dark">
@@ -59,7 +53,7 @@ const Navbar = () => {
                     )}
                 </ul>
                 <Link to="/cart" className="btn btn-dark">
-                    🛒 Total: {toPesos(getTotal())}
+                    🛒 Total: {toPesos(getTotal(cart))}
                 </Link>
             </div>
         </nav>
