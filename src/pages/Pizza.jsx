@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { toPesos } from '../helpers/toPesos';
 import './Pizza.css';
 import Navbar from '../components/Navbar';
@@ -8,12 +9,15 @@ const Pizza = () => {
     // State para el objeto de nuesta pizza
     const [pizza, setPizza] = useState({});
 
-    // URL del endpoint sin la id
-    const pizzaURL = 'http://localhost:5000/api/pizzas/';
+    // Id de la pizza obtenida desde la url
+    const { id } = useParams();
 
-    // Función asíncrona API pizza con la pizza P001 de default
-    const callPizzaAPI = async (id = 'P001') => {
-        const res = await fetch(pizzaURL + id);
+    // URL del endpoint 
+    const pizzaURL = `http://localhost:5000/api/pizzas/${id}`;
+
+    // Función asíncrona API pizza
+    const callPizzaAPI = async () => {
+        const res = await fetch(pizzaURL);
         const data = await res.json();
         setPizza(data);
     };
