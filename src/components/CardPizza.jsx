@@ -1,6 +1,7 @@
 import { toPesos } from '../helpers/toPesos';
 import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
+import { Link } from 'react-router-dom';
 
 const CardPizza = ({ id, name, price, ingredients, img, desc }) => {
     const { cart, setCart } = useContext(CartContext);
@@ -34,8 +35,13 @@ const CardPizza = ({ id, name, price, ingredients, img, desc }) => {
                 </ul>
                 <p className="my-3 fw-medium fs-4">Precio {toPesos(price)}</p>
                 <div className="d-flex justify-content-evenly">
-                    <button className="btn btn-light">Ver Más 👀</button>
-                    <button className="btn btn-dark" onClick={(e) => addPizza(e, id, name, price, img)}>
+                    <Link to={'/pizza/' + id} className="btn btn-light">
+                        Ver Más 👀
+                    </Link>
+                    <button
+                        className="btn btn-dark"
+                        onClick={(e) => addPizza(e, id, name, price, img)}
+                    >
                         Añadir 🛒
                     </button>
                 </div>
