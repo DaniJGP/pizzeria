@@ -3,11 +3,14 @@ import { toPesos } from '../helpers/toPesos';
 import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import { getTotal } from '../helpers/getTotal';
+import { UserContext } from '../contexts/UserContext';
+
 
 const Navbar = () => {
-    const { cart, setCart } = useContext(CartContext);
-    const token = false;
-    return (
+    const { cart } = useContext(CartContext);
+    const { token, logout } = useContext(UserContext);
+
+    return  (
         <nav data-bs-theme="dark" className="navbar navbar-expand text-bg-dark">
             <div className="container-fluid px-1 max-w-xl">
                 <Link to="/" className="navbar-brand">
@@ -22,23 +25,18 @@ const Navbar = () => {
                     {token ? (
                         <>
                             <li className="nav-item">
-                                <a href="/profile" className="nav-link">
+                                <Link to="/profile" className="nav-link">
                                     🔓 Profile
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a href="/logout" className="nav-link">
+                                <button onClick={logout} className="nav-link">
                                     🔒 Logout
-                                </a>
+                                </button>
                             </li>
                         </>
                     ) : (
                         <>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/profile">
-                                    🔓 Profile
-                                </Link>
-                            </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/login">
                                     🔐 Login
