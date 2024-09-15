@@ -1,18 +1,20 @@
 import { useContext, useState } from 'react';
 import { toPesos } from '../helpers/toPesos';
+import { getTotal } from '../helpers/getTotal';
+import { CartContext } from '../contexts/CartContext';
+import { UserContext } from '../contexts/UserContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './Cart.css';
-import { CartContext } from '../contexts/CartContext';
-import { getTotal } from '../helpers/getTotal';
 
 const Cart = () => {
     const { cart, setCart } = useContext(CartContext);
+    const { token } = useContext(UserContext);
 
     // Funciones para actualizar el carro con los botones - y +
     const morePizza = (id) => {
-        let nuevaCart = [...cart]; // nuevaCart = cart previene la re-renderización 
-        nuevaCart.find(item => item.id === id).count++;
+        let nuevaCart = [...cart]; // nuevaCart = cart previene la re-renderización
+        nuevaCart.find((item) => item.id === id).count++;
         setCart(nuevaCart);
     };
 
@@ -70,9 +72,13 @@ const Cart = () => {
                         </article>
                     ))}
                     <p className="my-4 fs-3">Total: {toPesos(getTotal(cart))}</p>
-                    <button className="btn btn-dark rounded-0 border-0 fs-3 px-5 py-3">
+                    {token ? (
+                        <button className="btn btn-dark rounded-0 border-0 fs-3 px-5 py-3">
+                            Pagar ahora
+                        </button>
+                    ) : (<button disabled className="btn btn-dark text-secondary rounded-0 border-0 fs-3 px-5 py-3">
                         Pagar ahora
-                    </button>
+                    </button>)}
                 </main>
             </div>
             <Footer />
