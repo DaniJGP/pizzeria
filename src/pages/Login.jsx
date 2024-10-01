@@ -1,18 +1,21 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { UserContext } from '../contexts/UserContext';
+
 
 const Login = () => {
-    // Mensajes de información y error
-    const [msg, setMsg] = useState('');
+    // Mensajes de error
     const [error, setError] = useState('');
 
     // Campos del formulario de login
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    // Método de login del UserContext
+    const {login} = useContext(UserContext);
+
     const validarIngreso = () => {
-        setMsg('');
         setError('');
 
         if (!email) {
@@ -30,8 +33,7 @@ const Login = () => {
             return 1;
         }
 
-        setMsg('Ha ingresado correctamente');
-
+        login(email, password);
         setError('');
         setEmail('');
         setPassword('');
@@ -72,7 +74,6 @@ const Login = () => {
                         />
                     </div>
                     {error ? <p className="text-danger fw-bold rounded p-2 mb-4">{error}</p> : null}
-                    {msg ? <p className="text-success fw-bold rounded p-2 mb-4">{msg}</p> : null}
                     <button
                         className="btn btn-success fs-6"
                         type="button"
