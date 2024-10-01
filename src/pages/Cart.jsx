@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import './Cart.css';
 
 const Cart = () => {
+    const [msg, setMsg] = useState('');
     const { cart, setCart } = useContext(CartContext);
     const { token } = useContext(UserContext);
 
@@ -29,6 +30,24 @@ const Cart = () => {
             }
         });
         setCart(nuevaCart);
+    };
+
+    // Función para enviar el carrito con el botón pagar
+    const checkOut = async () => {
+        const response = await fetch('http://localhost:5000/api/checkouts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                cart: cart,
+            }),
+        });
+        const data = await response.json();
+        if (!data.error) {
+            setMsg('¡Compra realizada!');
+        }
     };
 
     return (
@@ -73,12 +92,23 @@ const Cart = () => {
                     ))}
                     <p className="my-4 fs-3">Total: {toPesos(getTotal(cart))}</p>
                     {token ? (
-                        <button className="btn btn-dark rounded-0 border-0 fs-3 px-5 py-3">
+                        <button
+                            onClick={checkOut}
+                            className="btn btn-dark rounded-0 border-0 fs-3 px-5 py-3"
+                        >
                             Pagar ahora
                         </button>
-                    ) : (<button disabled className="btn btn-dark text-secondary rounded-0 border-0 fs-3 px-5 py-3">
-                        Pagar ahora
-                    </button>)}
+                    ) : (
+                        <button
+                            disabled
+                            className="btn btn-dark text-secondary rounded-0 border-0 fs-3 px-5 py-3"
+                        >
+                            Pagar ahora
+                        </button>
+                    )}
+                    {msg ? (
+                        <p className="text-success fw-bold rounded p-2 mb-4 fs-4">{msg}</p>
+                    ) : null}
                 </main>
             </div>
             <Footer />
