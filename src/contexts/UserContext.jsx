@@ -5,6 +5,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [userEmail, setUserEmail] = useState(null);
+    const [user, setUser] = useState({})
 
     const login = async (email, password) => {
         try {
@@ -61,8 +62,22 @@ export const UserProvider = ({ children }) => {
         setUserEmail(null);
     };
 
+    const getUser = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/me', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const data = await response.json();
+            setUser(data);
+        } catch (error) {
+            alert(error);
+        }
+    };
+
     return (
-        <UserContext.Provider value={{ userEmail, token, login, register, logout }}>
+        <UserContext.Provider value={{ userEmail, token, user, login, register, logout, getUser }}>
             {children}
         </UserContext.Provider>
     );

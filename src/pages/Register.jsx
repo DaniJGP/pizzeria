@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const Register = () => {
-    // Mensajes de información y error
-    const [msg, setMsg] = useState('');
+    // Mensaje de error
     const [error, setError] = useState('');
 
     // Campos del formulario de registro
@@ -12,10 +12,11 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
 
+    // Método de registro del UserContext
+    const { register } = useContext(UserContext);
+
     const validarRegistro = (e) => {
         e.preventDefault();
-        setMsg('');
-        setError('');
 
         if (!email) {
             setError('Ingrese su correo electrónico');
@@ -37,7 +38,7 @@ const Register = () => {
             return 1;
         }
 
-        setMsg('Se ha registrado correctamente');
+        register(email, password);
 
         setError('');
         setEmail('');
@@ -96,7 +97,6 @@ const Register = () => {
                     </div>
 
                     {error ? <p className="text-danger fw-bold rounded p-2 mb-4">{error}</p> : null}
-                    {msg ? <p className="text-success fw-bold rounded p-2 mb-4">{msg}</p> : null}
                     <button
                         className="btn btn-success fs-6"
                         type="submit"

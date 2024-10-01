@@ -1,9 +1,16 @@
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../contexts/UserContext';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import './Profile.css';
 
 const Profile = () => {
     const imgSrc = 'src/assets/img/abstract-user-flat-4.png';
+    const { user, getUser, logout } = useContext(UserContext);
+
+    useEffect(() => {
+        getUser();
+    }, []);
 
     return (
         <>
@@ -18,9 +25,11 @@ const Profile = () => {
                             <div className="col-8 text-start d-flex flex-column justify-content-between">
                                 <div>
                                     <h2 className="fs-3">Usuario</h2>
-                                    <p className="fs-5">Email: usuario@email.com</p>
+                                    <p className="fs-5">Email: {user.email}</p>
                                 </div>
-                                <button className="btn btn-danger align-self-end">Cerrar Sesión</button>
+                                <button className="btn btn-danger align-self-end" onClick={logout}>
+                                    Cerrar Sesión
+                                </button>
                             </div>
                         </div>
                     </div>

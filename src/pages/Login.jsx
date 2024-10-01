@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { UserContext } from '../contexts/UserContext';
 
-
 const Login = () => {
     // Mensajes de error
     const [error, setError] = useState('');
@@ -13,7 +12,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     // Método de login del UserContext
-    const {login} = useContext(UserContext);
+    const { login } = useContext(UserContext);
 
     const validarIngreso = () => {
         setError('');
@@ -41,7 +40,7 @@ const Login = () => {
     };
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <main className="formMain py-5">
                 <h1>Ingresa</h1>
                 <form className="form mx-auto">
